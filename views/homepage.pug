@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title #{title}
+    link(rel="stylesheet", href="/CSS/style.css")
+
+  body
+    h1 #{title}
+    h2 List of Pets present in Hubspot Account
+    br
+    br
+    a(href="http://localhost:3000/update-cobj") Add a new Pet to this table:
+    br
+    br
+    table
+      thead
+        tr
+          th Pet Name
+          th Pet Color
+          th Pet Size
+
+      tbody
+        each item in data
+          tr
+            td= item.properties.name
+            td= item.properties.color
+            td= item.properties.size
