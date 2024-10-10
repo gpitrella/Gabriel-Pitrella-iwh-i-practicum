@@ -43,18 +43,19 @@ app.get('/contacts', async (req, res) => {
     }
 });
 
+
 // App.get sample 
 app.get('/pets', async (req, res) => {
-    const contacts = 'https://api.hubspot.com/crm/v3/objects/pets';
+    const pets = 'https://api.hubspot.com/crm/v3/objects/pets?properties=name,color,size';
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     }
     try {
-        const resp = await axios.get(contacts, { headers });
+        const resp = await axios.get(pets, { headers });
         const data = resp.data.results;
         console.log('Data Pets:', data)
-        res.render('contacts', { title: 'Contacts | HubSpot APIs', data });      
+        res.render('pets', { title: 'Pets | HubSpot APIs', data });      
     } catch (error) {
         console.error(error);
     }
